@@ -12,8 +12,9 @@ print("Transformers version: ", transformers_version)
 
 def test_tokenizer(model_path:str, tokens_to_add:List[str] = [], normalized_added_tokens:bool = False):
     print("\n#######")
-    print(f"Testing tokenizer for model, {model_path}, with the following tokens added to it: {tokens_to_add}, and normalized_added_tokens = {normalized_added_tokens}")
-    print("Loading tokenizer from model path: ", model_path)
+    print(f"Testing tokenizer for model, {model_path}")
+    if not(tokens_to_add is None or len(tokens_to_add) == 0):
+        print(f"Will add the following tokens to it: {tokens_to_add}, and normalized_added_tokens = {normalized_added_tokens}")
 
     tokenizer: PreTrainedTokenizerBase = AutoTokenizer.from_pretrained(
                 model_path,
